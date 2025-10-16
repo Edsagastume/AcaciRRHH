@@ -1,0 +1,72 @@
+@model AcaciRRHH.Web.Models.TrayectoriaEmpleado
+
+@{
+    ViewData["Title"] = "Registrar Cambio de Trayectoria";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h3>Empleado: @ViewData["EmpleadoNombreCompleto"]</h3>
+<h5>Codigo de Empleado: @ViewData["EmpleadoCodigo"]</h5>
+<hr />
+<div class="row">
+    <div class="col-md-6">  
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdEmpleado" />
+            <div class="form-group mb-3">
+                <label asp-for="FechaCambio" class="control-label"></label>
+                <input asp-for="FechaCambio" type="date" class="form-control" />
+                <span asp-validation-for="FechaCambio" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="TipoCambio" class="control-label"></label>
+                <input asp-for="TipoCambio" class="form-control" placeholder="Ej: Ascenso, Aumento Salarial" />
+                <span asp-validation-for="TipoCambio" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PuestoAnterior" class="control-label"></label>
+                <input asp-for="PuestoAnterior" class="form-control" readonly /> @* Campo de solo lectura *@
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="PuestoNuevo" class="control-label"></label>
+                <input asp-for="PuestoNuevo" class="form-control" />
+                <span asp-validation-for="PuestoNuevo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="SalarioAnterior" class="control-label"></label>
+                <input asp-for="SalarioAnterior" type="number" step="0.01" class="form-control" readonly />
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="SalarioNuevo" class="control-label"></label>
+                <input asp-for="SalarioNuevo" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="SalarioNuevo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="DepartamentoAnterior" class="control-label"></label>
+                <input asp-for="DepartamentoAnterior" class="form-control" readonly />
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="DepartamentoNuevo" class="control-label"></label>
+                <input asp-for="DepartamentoNuevo" class="form-control" />
+                <span asp-validation-for="DepartamentoNuevo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="MotivoCambio" class="control-label"></label>
+                <textarea asp-for="MotivoCambio" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="MotivoCambio" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-4">
+                <input type="submit" value="Registrar Cambio" class="btn btn-primary" />
+                <a asp-action="Details" asp-controller="Empleados" asp-route-id="@Model.IdEmpleado" class="btn btn-secondary">Cancelar y Volver al Empleado</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

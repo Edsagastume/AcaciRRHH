@@ -1,0 +1,67 @@
+@model IEnumerable<AcaciRRHH.Web.Models.ApplicationUser>
+
+@{ 
+    ViewData["Title"] = "Usuarios";
+}
+
+<h1>Usuarios</h1>
+
+@if (User.IsInRole("Administrador"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Crear Nuevo</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                Roles
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @string.Join(", ", item.UserRoles.Select(ur => ur.Role?.Name))
+            </td>
+            <td>
+                @if (item.IsBlocked)
+                {
+                    <span class="text-danger">Bloqueado</span>
+                }
+                else
+                {
+                    <span class="text-success">Activo</span>
+                }
+            </td>
+            <td>
+                <div class="d-flex" style="gap: 8px;" role="group">
+                    <a asp-action="Edit" asp-route-id="@item.Id"  class="btn btn-primary">Editar</a>
+                    @if (item.IsBlocked)
+                    {
+                        <a asp-action="Unblock" asp-route-id="@item.Id" class="btn btn-secondary">Desbloquear</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Block" asp-route-id="@item.Id" class="btn btn-danger">Bloquear</a>
+                    }
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

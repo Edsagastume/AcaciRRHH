@@ -1,0 +1,121 @@
+@model IEnumerable<AcaciRRHH.Web.Models.TrayectoriaEmpleado>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+@if (User.IsInRole("Administrador"))
+{
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCambio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoCambio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PuestoAnterior)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PuestoNuevo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalarioAnterior)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalarioNuevo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartamentoAnterior)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartamentoNuevo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotivoCambio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistradoPor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRegistro)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpleado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCambio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoCambio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PuestoAnterior)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PuestoNuevo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalarioAnterior)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalarioNuevo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartamentoAnterior)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartamentoNuevo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotivoCambio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistradoPor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                <div class="d-flex" style="gap: 8px;" role="group">
+                    @if (User.IsInRole("Administrador"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.IdHistorialLaboral">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.IdHistorialLaboral">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdHistorialLaboral">Delete</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Details" asp-route-id="@item.IdHistorialLaboral">Details</a>
+                    }
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

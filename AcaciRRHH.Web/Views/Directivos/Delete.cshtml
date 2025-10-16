@@ -1,0 +1,51 @@
+@model AcaciRRHH.Web.Models.Directivo
+
+@{
+    ViewData["Title"] = "Eliminar Directivo";
+}
+
+<h1>Eliminar Directivo</h1>
+
+<h3>¿Estás seguro de que quieres eliminar este directivo?</h3>
+<div>
+    <h4>Directivo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Persona)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Persona!.NombreCompleto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CargoDirectivo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CargoDirectivo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaInicioMandato)
+        </dt>
+        <dd class="col-sm-10">
+            @Model.FechaInicioMandato.ToLocalTime().ToString("dd/MM/yyyy")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaFinMandato)
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.FechaFinMandato.HasValue ? Model.FechaFinMandato.Value.ToLocalTime().ToString("dd/MM/yyyy") : "Actual")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoMiembro)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TipoMiembro)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdDirectivo" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

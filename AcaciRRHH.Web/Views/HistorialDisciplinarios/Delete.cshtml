@@ -1,0 +1,65 @@
+@model AcaciRRHH.Web.Models.HistorialDisciplinario
+
+@{
+    ViewData["Title"] = "Eliminar Historial Disciplinario";
+}
+
+<h2>Eliminar Historial Disciplinario</h2>
+
+<h3>¿Estas seguro de eliminar este historial disciplinario?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaIncidente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaIncidente)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoIncidente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoIncidente)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AccionTomada)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AccionTomada)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RutaIncidente)
+        </dt>
+        <dd class = "col-sm-10">
+                        @if (!string.IsNullOrEmpty(Model.RutaIncidente))
+            {
+                <a href="@Url.Content(Model.RutaIncidente)" target="_blank">Ver Archivo</a>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RegistradoPor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RegistradoPor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaRegistro)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdIncidente" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> 
+        <a asp-controller="Personas" asp-action="Details" asp-route-id="@(Model.IdPersona)" class="btn btn-info">Cancelar</a>
+    </form>
+</div>

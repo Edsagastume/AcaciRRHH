@@ -1,0 +1,377 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AcaciRRHH.Web
+build_property.RootNamespace = AcaciRRHH.Web
+build_property.ProjectDir = c:\Users\Dsagastume\Documents\proyectos\AcaciRRHH\AcaciRRHH.Web\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = c:\Users\Dsagastume\Documents\proyectos\AcaciRRHH\AcaciRRHH.Web
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Account/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Atestados/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRlc3RhZG9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Atestados/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRlc3RhZG9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Atestados/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRlc3RhZG9zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Atestados/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRlc3RhZG9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Audit/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/CapacitacionesEmpleado/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpdGFjaW9uZXNFbXBsZWFkb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/CapacitacionesEmpleado/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpdGFjaW9uZXNFbXBsZWFkb1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/CapacitacionesEmpleado/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpdGFjaW9uZXNFbXBsZWFkb1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/CapacitacionesEmpleado/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpdGFjaW9uZXNFbXBsZWFkb1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/CapacitacionesEmpleado/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpdGFjaW9uZXNFbXBsZWFkb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Directivos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0aXZvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Directivos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0aXZvc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Directivos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0aXZvc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Directivos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0aXZvc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Directivos/Inactivate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0aXZvc1xJbmFjdGl2YXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Directivos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0aXZvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Empleados/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Empleados/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Empleados/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Empleados/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Empleados/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Empleados/Reactivate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXFJlYWN0aXZhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Empleados/Terminate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXFRlcm1pbmF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/EvaluacionesDesempeno/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZhbHVhY2lvbmVzRGVzZW1wZW5vXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/EvaluacionesDesempeno/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZhbHVhY2lvbmVzRGVzZW1wZW5vXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/EvaluacionesDesempeno/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZhbHVhY2lvbmVzRGVzZW1wZW5vXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/EvaluacionesDesempeno/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZhbHVhY2lvbmVzRGVzZW1wZW5vXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/EvaluacionesDesempeno/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZhbHVhY2lvbmVzRGVzZW1wZW5vXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/HistorialDirectivos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWFsRGlyZWN0aXZvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/HistorialDirectivos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWFsRGlyZWN0aXZvc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/HistorialDirectivos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWFsRGlyZWN0aXZvc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/HistorialDirectivos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWFsRGlyZWN0aXZvc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/HistorialDirectivos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWFsRGlyZWN0aXZvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/HistorialDisciplinarios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWFsRGlzY2lwbGluYXJpb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/HistorialDisciplinarios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWFsRGlzY2lwbGluYXJpb3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/HistorialDisciplinarios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWFsRGlzY2lwbGluYXJpb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/HistorialDisciplinarios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWFsRGlzY2lwbGluYXJpb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/HistorialDisciplinarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWFsRGlzY2lwbGluYXJpb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Incapacidades/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jYXBhY2lkYWRlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Incapacidades/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jYXBhY2lkYWRlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Incapacidades/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jYXBhY2lkYWRlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Incapacidades/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jYXBhY2lkYWRlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Incapacidades/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jYXBhY2lkYWRlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/NivelesEducativos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTml2ZWxlc0VkdWNhdGl2b3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/NivelesEducativos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTml2ZWxlc0VkdWNhdGl2b3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/NivelesEducativos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTml2ZWxlc0VkdWNhdGl2b3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/NivelesEducativos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTml2ZWxlc0VkdWNhdGl2b3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/NivelesEducativos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTml2ZWxlc0VkdWNhdGl2b3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Permisos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Permisos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Permisos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Permisos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Permisos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Personas/AllCapacitaciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYXNcQWxsQ2FwYWNpdGFjaW9uZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Personas/AllEvaluacionesDesempeno.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYXNcQWxsRXZhbHVhY2lvbmVzRGVzZW1wZW5vLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Personas/AllHistorialDisciplinario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYXNcQWxsSGlzdG9yaWFsRGlzY2lwbGluYXJpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Personas/AllNivelesEducativos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYXNcQWxsTml2ZWxlc0VkdWNhdGl2b3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Personas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Personas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Personas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Personas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/TrayectoriaEmpleados/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJheWVjdG9yaWFFbXBsZWFkb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/TrayectoriaEmpleados/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJheWVjdG9yaWFFbXBsZWFkb3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/TrayectoriaEmpleados/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJheWVjdG9yaWFFbXBsZWFkb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/TrayectoriaEmpleados/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJheWVjdG9yaWFFbXBsZWFkb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/TrayectoriaEmpleados/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJheWVjdG9yaWFFbXBsZWFkb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Users/Block.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQmxvY2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Users/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Users/Unblock.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcVW5ibG9jay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Vacaciones/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYWNpb25lc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Vacaciones/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYWNpb25lc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Vacaciones/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYWNpb25lc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Vacaciones/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYWNpb25lc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Vacaciones/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYWNpb25lc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Dsagastume/Documents/proyectos/AcaciRRHH/AcaciRRHH.Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-yx0lfsrgbg

@@ -1,0 +1,55 @@
+@model AcaciRRHH.Web.Models.HistorialDirectivo
+
+@{
+    ViewData["Title"] = "Registrar Historial de Directivo";
+    var directivoNombreCompleto = ViewData["DirectivoNombreCompleto"] as string;
+}
+
+<h1>Registrar Historial de Directivo</h1>
+
+<h4>Para: @directivoNombreCompleto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdDirectivo" /> @* Campo oculto para el Id del Directivo *@
+
+            <div class="form-group">
+                <label asp-for="Cargo" class="control-label"></label>
+                <select asp-for="Cargo" class="form-control" asp-items="Html.GetEnumSelectList<CargoDirectivoEnum>()"></select>
+                <span asp-validation-for="Cargo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaInicioMandato" class="control-label"></label>
+                <input asp-for="FechaInicioMandato" type="date" class="form-control" />
+                <span asp-validation-for="FechaInicioMandato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaFinMandato" class="control-label"></label>
+                <input asp-for="FechaFinMandato" type="date" class="form-control" />
+                <span asp-validation-for="FechaFinMandato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoMandato" class="control-label"></label>
+                {{-- CAMBIO AQUÍ: Dropdown para TipoMiembro --}}
+                <select asp-for="TipoMandato" class="form-control" asp-items="Html.GetEnumSelectList<TipoMiembroOrganoEnum>()"></select>
+                <span asp-validation-for="TipoMandato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comentarios" class="control-label"></label>
+                <textarea asp-for="Comentarios" class="form-control"></textarea>
+                <span asp-validation-for="Comentarios" class="text-danger"></span>
+            </div>
+            @* RegistradoPor y FechaRegistro se llenan en el controlador *@
+            <div class="form-group mt-3">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+                <a asp-controller="Directivos" asp-action="Details" asp-route-id="@Model.IdDirectivo" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

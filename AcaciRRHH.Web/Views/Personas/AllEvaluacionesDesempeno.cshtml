@@ -1,0 +1,73 @@
+@model AcaciRRHH.Web.Models.Persona
+
+@{
+    ViewData["Title"] = "Todas las Evaluaciones de Desempeño de " + (Model?.Nombre ?? "") + " " + (Model?.Apellidos ?? "");
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model?.Empleado != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha Evaluación</th>
+                <th>Periodo</th>
+                <th>Puntuación</th>
+                <th>Evaluador</th>
+                <th>Comentarios</th>
+                <th>Informe</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Empleado.EvaluacionesDesempeno != null)
+            {
+                @foreach (var item in Model.Empleado.EvaluacionesDesempeno)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaEvaluacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Periodo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Puntuacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Evaluador)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Comentarios)
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.RutaInforme))
+                            {
+                                <a href="@Url.Content(item.RutaInforme)" target="_blank">Ver Informe</a>
+                            }
+                        </td>
+                        <td>
+                            <a asp-controller="EvaluacionesDesempeno" asp-action="Details" asp-route-id="@item.IdEvaluacion">Detalles</a>
+                            @if (User.IsInRole("Administrador"))
+                            {
+                                <span>|</span>
+                                <a asp-controller="EvaluacionesDesempeno" asp-action="Edit" asp-route-id="@item.IdEvaluacion">Editar</a>
+                                <span>|</span>
+                                <a asp-controller="EvaluacionesDesempeno" asp-action="Delete" asp-route-id="@item.IdEvaluacion">Eliminar</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay evaluaciones de desempeño disponibles para esta persona.</p>
+}
+
+<div>
+    <a asp-action="Details" asp-route-id="@(Model?.IdPersona)" class="btn btn-secondary">Volver a Detalles de Persona</a>
+</div>

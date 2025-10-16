@@ -1,0 +1,95 @@
+@model AcaciRRHH.Web.Models.TrayectoriaEmpleado
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>Trayectoria Empleado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdHistorialLaboral" />
+            <div class="form-group">
+                <label asp-for="IdEmpleado" class="control-label"></label>
+                <input asp-for="IdEmpleado" class="form-control" />
+                <span asp-validation-for="IdEmpleado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCambio" class="control-label"></label>
+                <input asp-for="FechaCambio" class="form-control" />
+                <span asp-validation-for="FechaCambio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoCambio" class="control-label"></label>
+                <input asp-for="TipoCambio" class="form-control" />
+                <span asp-validation-for="TipoCambio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PuestoAnterior" class="control-label"></label>
+                <input asp-for="PuestoAnterior" class="form-control" />
+                <span asp-validation-for="PuestoAnterior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PuestoNuevo" class="control-label"></label>
+                <input asp-for="PuestoNuevo" class="form-control" />
+                <span asp-validation-for="PuestoNuevo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalarioAnterior" class="control-label"></label>
+                <input asp-for="SalarioAnterior" class="form-control" />
+                <span asp-validation-for="SalarioAnterior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalarioNuevo" class="control-label"></label>
+                <input asp-for="SalarioNuevo" class="form-control" />
+                <span asp-validation-for="SalarioNuevo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartamentoAnterior" class="control-label"></label>
+                <input asp-for="DepartamentoAnterior" class="form-control" />
+                <span asp-validation-for="DepartamentoAnterior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartamentoNuevo" class="control-label"></label>
+                <input asp-for="DepartamentoNuevo" class="form-control" />
+                <span asp-validation-for="DepartamentoNuevo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MotivoCambio" class="control-label"></label>
+                <input asp-for="MotivoCambio" class="form-control" />
+                <span asp-validation-for="MotivoCambio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegistradoPor" class="control-label"></label>
+                <input asp-for="RegistradoPor" class="form-control" />
+                <span asp-validation-for="RegistradoPor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaRegistro" class="control-label"></label>
+                <input asp-for="FechaRegistro" class="form-control" />
+                <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>

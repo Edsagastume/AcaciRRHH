@@ -1,0 +1,63 @@
+@model AcaciRRHH.Web.Models.EvaluacionDesempeno
+
+@{
+    ViewData["Title"] = "Detalle de Evaluación de Desempeño";
+}
+
+<h2>Detalles de Evaluación de Desempeño</h2>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaEvaluacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaEvaluacion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Periodo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Periodo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Puntuacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Puntuacion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Evaluador)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Evaluador)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Comentarios)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Comentarios)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RutaInforme)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.RutaInforme))
+            {
+                <a href="@Url.Content(Model.RutaInforme)" target="_blank">Ver Informe</a>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Delete" asp-route-id="@Model?.IdEvaluacion" class="btn btn-danger">Eliminar</a>
+    <a asp-controller="Personas" asp-action="Details" asp-route-id="@Model?.IdEmpleado" class="btn btn-primary">Volver</a>
+    </div>
+</div>

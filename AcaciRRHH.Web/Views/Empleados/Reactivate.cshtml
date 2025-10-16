@@ -1,0 +1,54 @@
+@model AcaciRRHH.Web.ViewModels.EmpleadoReactivateViewModel
+@{
+    ViewData["Title"] = "Reactivar Relación Laboral";
+}
+
+<h2>Reactivar Relación Laboral</h2>
+
+<h4>@ViewData["Title"]</h4>
+<hr />
+
+<div class="alert alert-warning" role="alert">
+    <strong>¡Advertencia!</strong> Estás a punto de reactivar la relación laboral de este empleado.
+    Esto cambiará su estado a 'Activo' y eliminará cualquier fecha, motivo o tipo de finalización anterior.
+    ¿Estás seguro de que deseas continuar?
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">
+                Nombre:
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.NombreCompletoEmpleado)
+            </dd>
+            <dt class="col-sm-4">
+                Fecha Contratación:
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.FechaContratacion)
+            </dd>
+        </dl>
+
+        <form asp-action="Reactivate" method="post">
+            <input type="hidden" asp-for="IdEmpleado" />
+            @* Si agregaste MotivoReactivacion al ViewModel, descomenta esto: *@
+            @*
+            <div class="form-group mb-3">
+                <label asp-for="MotivoReactivacion" class="control-label"></label>
+                <textarea asp-for="MotivoReactivacion" class="form-control"></textarea>
+                <span asp-validation-for="MotivoReactivacion" class="text-danger"></span>
+            </div>
+            *@
+            <div class="form-group">
+                <input type="submit" value="Confirmar Reactivación" class="btn btn-success" />
+                <a asp-action="Details" asp-route-id="@Model.IdEmpleado" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,90 @@
+@model IEnumerable<AcaciRRHH.Web.Models.Directivo>
+@using AcaciRRHH.Web.Models
+
+@{
+    ViewData["Title"] = "Directivos";
+}
+
+<h1>Directivos</h1>
+
+@if (User.IsInRole("Administrador"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Crear Nuevo Directivo</a>
+    </p>
+}
+
+<table class="table table-striped table-hover">
+    <thead class="table-green table-striped table-hover">
+        <tr>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.Persona)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.CargoDirectivo)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.FechaInicioMandato)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.FechaFinMandato)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.TipoMiembro)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.MotivoInactivacion)
+            </th>
+            <th class="text-center align-middle">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center align-middle">
+                    @Html.DisplayFor(modelItem => item.Persona!.NombreCompleto)
+                </td>
+                <td class="text-center align-middle">
+                    @Html.DisplayFor(modelItem => item.CargoDirectivo)
+                </td>
+                <td class="text-center align-middle">
+                    @item.FechaInicioMandato.ToLocalTime().ToString("dd/MM/yyyy")
+                </td>
+                <td class="text-center align-middle">
+                    @(item.FechaFinMandato.HasValue ? item.FechaFinMandato.Value.ToLocalTime().ToString("dd/MM/yyyy") : "Actual")
+                </td>
+                <td class="text-center align-middle">
+                    @Html.DisplayFor(modelItem => item.TipoMiembro)
+                </td>
+                <td class="text-center align-middle">
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td class="text-center align-middle">
+                    @Html.DisplayFor(modelItem => item.MotivoInactivacion)
+                </td>
+                <td class="text-center align-middle">
+                <div class="d-flex" style="gap: 8px;" role="group" aria-label="Acciones de Directivo">
+                    @if (User.IsInRole("Administrador"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.IdDirectivo" class="btn btn-sm btn-info">Editar</a> 
+                        <a asp-action="Details" asp-route-id="@item.IdDirectivo" class="btn btn-sm btn-secondary">Detalles</a> 
+                        <a asp-action="Delete" asp-route-id="@item.IdDirectivo" class="btn btn-sm btn-danger">Eliminar</a>
+                        @if (item.Estado == AcaciRRHH.Web.Models.EstadoDirectivo.Activo)
+                        {
+                            <a asp-action="Inactivate" asp-route-id="@item.IdDirectivo" class="btn btn-sm btn-warning">Inactivar</a>
+                        }
+                    }
+                    else
+                    {
+                        <a asp-action="Details" asp-route-id="@item.IdDirectivo" class="btn btn-sm btn-secondary">Detalles</a>
+                    }
+                </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

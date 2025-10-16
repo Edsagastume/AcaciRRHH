@@ -1,0 +1,64 @@
+@model AcaciRRHH.Web.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4" style="color: var(--primary-dark-teal);">Bienvenido a Acaci RRHH</h1>
+    <p>Sistema de Gestión de Recursos Humanos</p>
+</div>
+
+<div class="container main-content">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <h4>Total de Empleados Activos</h4>
+                <p class="metric-value">@Model.TotalEmpleados</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <h4>Empleados por Agencia</h4>
+                @if (Model.EmpleadosPorAgencia != null && Model.EmpleadosPorAgencia.Any())
+                {
+                    <ul class="list-group list-group-flush">
+                        @foreach (var item in Model.EmpleadosPorAgencia)
+                        {
+                            <li class="list-group-item">
+                                <strong>@item.Key</strong>: @item.Value empleados
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>No hay información de empleados por agencia disponible.</p>
+                }
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <h4>Integrantes por Comité</h4>
+                @if (Model.ComiteIntegrantes != null && Model.ComiteIntegrantes.Any())
+                {
+                    <ul class="list-group list-group-flush">
+                        @foreach (var item in Model.ComiteIntegrantes)
+                        {
+                            <li class="list-group-item">
+                                <strong>@item.Key</strong>: @item.Value integrantes
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>No hay información de comités disponible.</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    @* Add more dashboard sections here as needed *@
+
+</div>

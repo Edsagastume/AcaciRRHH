@@ -1,0 +1,54 @@
+@model AcaciRRHH.Web.Models.Atestado
+
+@{
+    ViewData["Title"] = "Eliminar Atestado";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>¿Está seguro de que desea eliminar este atestado?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoAtestado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TipoAtestado)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreOriginalArchivo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NombreOriginalArchivo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RutaArchivo)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.RutaArchivo))
+            {
+                <a href="@Url.Content(Model.RutaArchivo)" target="_blank">Ver Archivo</a>
+            }
+            else
+            {
+                <span>No hay archivo adjunto</span>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaSubida)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaSubida)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdAtestado" />
+        @if (User.IsInRole("Administrador"))
+        {
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        }
+        <a asp-controller="Personas" asp-action="Details" asp-route-id="@Model.IdPersona" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

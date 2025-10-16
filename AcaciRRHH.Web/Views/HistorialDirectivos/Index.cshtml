@@ -1,0 +1,117 @@
+@model IEnumerable<AcaciRRHH.Web.Models.HistorialDirectivo>
+
+@{
+    ViewData["Title"] = "Historial de Mandatos";
+    var directivoNombreCompleto = ViewData["DirectivoNombreCompleto"] as string;
+    var idDirectivoActual = ViewData["IdDirectivoActual"] as int?;
+}
+
+<h1>Historial de Mandatos para @directivoNombreCompleto</h1>
+
+@if (User.IsInRole("Administrador"))
+{
+    <p>
+        @if (idDirectivoActual.HasValue)
+        {
+            <a asp-controller="HistorialDirectivos" asp-action="Create" asp-route-idDirectivo="@idDirectivoActual.Value" class="btn btn-primary">Registrar Nuevo Historial</a>
+        }
+    </p>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cargo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaInicioMandato)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaFinMandato)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoMandato)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Comentarios)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RegistradoPor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaRegistro)
+                </th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderByDescending(h => h.FechaRegistro))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cargo)
+                    </td>
+                    <td>
+                        @item.FechaInicioMandato.ToLocalTime().ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @(item.FechaFinMandato.HasValue ? item.FechaFinMandato.Value.ToLocalTime().ToString("dd/MM/yyyy") : "N/A")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoMandato)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comentarios)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegistradoPor)
+                    </td>
+                    <td>
+                        @item.FechaRegistro.ToLocalTime().ToString("dd/MM/yyyy HH:mm")
+                    </td>
+                    <td>
+                        <div class="d-flex" style="gap: 8px;" role="group">
+                            @if (User.IsInRole("Administrador"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.IdHistorialDirectivo" class="btn btn-sm btn-info">Editar</a>
+                                <a asp-action="Details" asp-route-id="@item.IdHistorialDirectivo" class="btn btn-sm btn-secondary">Detalles</a>
+                                <a asp-action="Delete" asp-route-id="@item.IdHistorialDirectivo" class="btn btn-sm btn-danger">Eliminar</a>
+                            }
+                            else
+                            {
+                                <a asp-action="Details" asp-route-id="@item.IdHistorialDirectivo" class="btn btn-sm btn-secondary">Detalles</a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay historial de mandatos registrado para este directivo.</p>
+}
+
+<div>
+    <a asp-controller="Directivos" asp-action="Details" asp-route-id="@idDirectivoActual" class="btn btn-outline-secondary">Volver a Detalles del Directivo</a> |
+    <a asp-controller="Directivos" asp-action="Index" class="btn btn-secondary">Volver a la Lista de Directivos</a>
+</div>

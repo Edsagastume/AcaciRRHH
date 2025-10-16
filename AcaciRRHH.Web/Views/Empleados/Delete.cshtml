@@ -1,0 +1,46 @@
+@model AcaciRRHH.Web.Models.Empleado
+
+@{
+    ViewData["Title"] = "Eliminar Empleado";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>¿Estás seguro de que quieres eliminar a este empleado?</h3>
+<div>
+    <h4>Datos del Empleado a Eliminar</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Persona Asociada
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Persona!.Nombre) @Html.DisplayFor(model => model.Persona!.Apellidos)
+            (@Html.DisplayFor(model => model.Persona!.DUI))
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CodigoEmpleado)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CodigoEmpleado)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Puesto)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Puesto)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Departamento)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Departamento)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdEmpleado" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Cancelar y Volver</a>
+    </form>
+</div>

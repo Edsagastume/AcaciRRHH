@@ -1,0 +1,77 @@
+@model AcaciRRHH.Web.Models.Persona
+
+@{
+    ViewData["Title"] = "Todo el Historial Disciplinario de " + (Model?.Nombre ?? "") + " " + (Model?.Apellidos ?? "");
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model?.Empleado != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha Incidente</th>
+                <th>Tipo Incidente</th>
+                <th>Descripción</th>
+                <th>Acción Tomada</th>
+                <th>Registrado Por</th>
+                <th>Fecha Registro</th>
+                <th>Archivo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Empleado.HistorialDisciplinario != null)
+            {
+                @foreach (var item in Model.Empleado.HistorialDisciplinario)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaIncidente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoIncidente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccionTomada)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RegistradoPor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaRegistro)
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.RutaIncidente))
+                            {
+                                <a href="@Url.Content(item.RutaIncidente)" target="_blank">Ver Archivo</a>
+                            }
+                        </td>
+                        <td>
+                            <a asp-controller="HistorialDisciplinarios" asp-action="Details" asp-route-id="@item.IdIncidente">Detalles</a>
+                            @if (User.IsInRole("Administrador"))
+                            {
+                                <span>|</span>
+                                <a asp-controller="HistorialDisciplinarios" asp-action="Edit" asp-route-id="@item.IdIncidente">Editar</a>
+                                <span>|</span>
+                                <a asp-controller="HistorialDisciplinarios" asp-action="Delete" asp-route-id="@item.IdIncidente">Eliminar</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay historial disciplinario disponible para esta persona.</p>
+}
+
+<div>
+    <a asp-action="Details" asp-route-id="@(Model?.IdPersona)" class="btn btn-secondary">Volver a Detalles de Persona</a>
+</div>

@@ -1,0 +1,35 @@
+@model AcaciRRHH.Web.ViewModels.DirectivoInactivationViewModel
+
+@{
+    ViewData["Title"] = "Inactivar Directivo";
+}
+
+<h2>Inactivar Directivo</h2>
+
+<h3>¿Está seguro que desea inactivar a @Model.NombreCompleto?</h3>
+<div>
+    <h4>Directivo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nombre
+        </dt>
+        <dd class="col-sm-10">
+            @Model.NombreCompleto
+        </dd>
+    </dl>
+
+    <form asp-action="Inactivate">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="IdDirectivo" />
+        <div class="form-group">
+            <label asp-for="MotivoInactivacion" class="control-label"></label>
+            <input asp-for="MotivoInactivacion" class="form-control" value="Por acuerdo de consejo" />
+            <span asp-validation-for="MotivoInactivacion" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Inactivar" class="btn btn-danger" /> |
+            <a asp-action="Index">Volver a la lista</a>
+        </div>
+    </form>
+</div>

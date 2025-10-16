@@ -1,0 +1,60 @@
+@model AcaciRRHH.Web.Models.NivelEducativo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>NivelEducativo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdNivelEducativo" />
+            <input type="hidden" asp-for="IdPersona" />
+            <div class="form-group">
+                <label asp-for="GradoAcademico" class="control-label"></label>
+                <input asp-for="GradoAcademico" class="form-control" />
+                <span asp-validation-for="GradoAcademico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Institucion" class="control-label"></label>
+                <input asp-for="Institucion" class="form-control" />
+                <span asp-validation-for="Institucion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TituloObtenido" class="control-label"></label>
+                <input asp-for="TituloObtenido" class="form-control" />
+                <span asp-validation-for="TituloObtenido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaInicio" class="control-label"></label>
+                <input asp-for="FechaInicio" class="form-control" />
+                <span asp-validation-for="FechaInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaFin" class="control-label"></label>
+                <input asp-for="FechaFin" class="form-control" />
+                <span asp-validation-for="FechaFin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comentarios" class="control-label"></label>
+                <input asp-for="Comentarios" class="form-control" />
+                <span asp-validation-for="Comentarios" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Personas" asp-action="Details" asp-route-id="@Model.IdPersona">Back to Details</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

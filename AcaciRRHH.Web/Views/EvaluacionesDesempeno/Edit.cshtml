@@ -1,0 +1,65 @@
+@model AcaciRRHH.Web.Models.EvaluacionDesempeno
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>EvaluacionDesempeno</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdEvaluacion" />
+            <input type="hidden" asp-for="IdEmpleado" />
+            <input type="hidden" asp-for="RutaInforme" /> @* Keep existing path if no new file is uploaded *@
+            <input type="hidden" asp-for="CreatedBy" />
+            <input type="hidden" asp-for="CreatedAt" />
+            <input type="hidden" asp-for="LastModifiedBy" />
+            <input type="hidden" asp-for="LastModifiedAt" />
+            <div class="form-group">
+                <label asp-for="FechaEvaluacion" class="control-label"></label>
+                <input asp-for="FechaEvaluacion" class="form-control" type="date" />
+                <span asp-validation-for="FechaEvaluacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Periodo" class="control-label"></label>
+                <input asp-for="Periodo" class="form-control" />
+                <span asp-validation-for="Periodo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Puntuacion" class="control-label"></label>
+                <input asp-for="Puntuacion" class="form-control" />
+                <span asp-validation-for="Puntuacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Evaluador" class="control-label"></label>
+                <input asp-for="Evaluador" class="form-control" />
+                <span asp-validation-for="Evaluador" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comentarios" class="control-label"></label>
+                <input asp-for="Comentarios" class="form-control" />
+                <span asp-validation-for="Comentarios" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArchivoInforme" class="control-label"></label>
+                <input asp-for="ArchivoInforme" class="form-control" type="file" />
+                <span asp-validation-for="ArchivoInforme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

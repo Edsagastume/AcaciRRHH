@@ -1,0 +1,50 @@
+@model IEnumerable<AcaciRRHH.Web.ViewModels.AuditLogEntryViewModel>
+
+@{
+    ViewData["Title"] = "Historial de Cambios";
+}
+
+<h1>Audit Log</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EntityType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Action)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timestamp)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntityType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntityId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timestamp)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

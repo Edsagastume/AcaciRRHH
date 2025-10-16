@@ -1,0 +1,48 @@
+@model AcaciRRHH.Web.Models.Persona
+
+@{
+    ViewData["Title"] = "Todos los Niveles Educativos de " + (Model?.Nombre ?? "") + " " + (Model?.Apellidos ?? "");
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Grado Académico</th>
+            <th>Institución</th>
+            <th>Título Obtenido</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model?.NivelesEducativos != null)
+        {
+            @foreach (var item in Model.NivelesEducativos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GradoAcademico)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Institucion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TituloObtenido)
+                    </td>
+                    <td>
+                        <a asp-controller="NivelesEducativos" asp-action="Details" asp-route-id="@item.IdNivelEducativo" class="btn btn-secondary">Detalles</a>
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <a asp-controller="NivelesEducativos" asp-action="Delete" asp-route-id="@item.IdNivelEducativo" class="btn btn-danger">Eliminar</a>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Details" asp-route-id="@(Model?.IdPersona)" class="btn btn-secondary">Volver a Detalles de Persona</a>
+</div>

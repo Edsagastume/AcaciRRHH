@@ -1,0 +1,134 @@
+@model AcaciRRHH.Web.Models.Vacacion
+
+@{
+    ViewData["Title"] = "Editar Vacaciones";
+}
+
+<h2>Editar Vacaciones</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="IdEmpleado" />
+            <input type="hidden" asp-for="SonConsecutivas" id="sonConsecutivasHidden" />
+
+            <div class="form-group">
+                <label asp-for="FechaSolicitud" class="control-label"></label>
+                <input asp-for="FechaSolicitud" class="form-control datepicker" />
+                <span asp-validation-for="FechaSolicitud" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <input type="checkbox" id="noConsecutivasCheck" class="form-check-input" />
+                <label class="form-check-label" for="noConsecutivasCheck">Vacaciones No Consecutivas</label>
+            </div>
+
+            <div id="consecutiveDates">
+                <div class="form-group">
+                    <label asp-for="FechaInicio" class="control-label"></label>
+                    <input asp-for="FechaInicio" class="form-control datepicker" />
+                    <span asp-validation-for="FechaInicio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaFin" class="control-label"></label>
+                    <input asp-for="FechaFin" class="form-control datepicker" />
+                    <span asp-validation-for="FechaFin" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div id="nonConsecutiveDates" style="display: none;">
+                <div class="form-group">
+                    <label asp-for="FechasNoConsecutivas" class="control-label"></label>
+                    <input asp-for="FechasNoConsecutivas" class="form-control" id="fechasNoConsecutivasInput" />
+                    <span asp-validation-for="FechasNoConsecutivas" class="text-danger"></span>
+                    <small class="form-text text-muted">Seleccione una o varias fechas del calendario.</small>
+                </div>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Aprobado" /> @Html.DisplayNameFor(model => model.Aprobado)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comentarios" class="control-label"></label>
+                <input asp-for="Comentarios" class="form-control" />
+                <span asp-validation-for="Comentarios" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mt-3">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a asp-controller="Empleados" asp-action="Details" asp-route-id="@Model.IdEmpleado" class="btn btn-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var noConsecutivasCheckbox = $('#noConsecutivasCheck');
+            var sonConsecutivasHidden = $('#sonConsecutivasHidden');
+            
+            var consecutiveDatesDiv = $('#consecutiveDates');
+            var nonConsecutiveDatesDiv = $('#nonConsecutiveDates');
+            
+            var fechaInicioInput = $('#FechaInicio');
+            var fechaFinInput = $('#FechaFin');
+            var fechasNoConsecutivasInput = $('#fechasNoConsecutivasInput');
+
+            // Initialize Datepicker for all date fields
+            $('.datepicker').datepicker({
+                format: "yyyy-mm-dd",
+                language: 'es',
+                todayHighlight: true,
+                autoclose: true
+            });
+
+            // Initialize Datepicker for non-consecutive dates
+            fechasNoConsecutivasInput.datepicker({
+                format: "yyyy-mm-dd",
+                multidate: true,
+                language: 'es',
+                todayHighlight: true
+            });
+
+            function toggleDateFields() {
+                if (noConsecutivasCheckbox.is(':checked')) {
+                    sonConsecutivasHidden.val('false');
+                    consecutiveDatesDiv.hide();
+                    nonConsecutiveDatesDiv.show();
+                    fechaInicioInput.val('');
+                    fechaFinInput.val('');
+                } else {
+                    sonConsecutivasHidden.val('true');
+                    consecutiveDatesDiv.show();
+                    nonConsecutiveDatesDiv.hide();
+                    fechasNoConsecutivasInput.val('');
+                }
+            }
+
+            // Set initial state based on model
+            if ("@Model.SonConsecutivas" === "False") {
+                noConsecutivasCheckbox.prop('checked', true);
+            } else {
+                noConsecutivasCheckbox.prop('checked', false);
+            }
+
+            toggleDateFields();
+
+            // Toggle visibility on checkbox change
+            noConsecutivasCheckbox.change(function () {
+                toggleDateFields();
+            });
+        });
+    </script>
+}

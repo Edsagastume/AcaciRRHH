@@ -1,0 +1,377 @@
+@model AcaciRRHH.Web.Models.Persona?
+@using AcaciRRHH.Web.Models
+
+
+@{
+    ViewData["Title"] = "Detalles de Persona";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Datos Personales</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.Nombre)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.Nombre)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.Apellidos)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.Apellidos)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.FechaNacimiento)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.FechaNacimiento)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.Genero)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.Genero)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.DUI)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.DUI)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.FechaVencimientoDUI)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.FechaVencimientoDUI)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.NIT)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.NIT)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.Email)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.Email)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.Telefono)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.Telefono)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.Direccion)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.Direccion)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.NumeroAFP)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.NumeroAFP)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model!.TipoAFP)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model!.TipoAFP)
+        </dd>
+    </dl>
+    <div>
+        @if (User.IsInRole("Administrador"))
+        {
+        <a asp-action="Edit" asp-route-id="@Model?.IdPersona" class="btn btn-primary">Editar</a> 
+        }
+        <a asp-action="Index" class="btn btn-danger">Volver al Listado</a>
+    </div>
+</div>
+<hr />
+
+<h4>Atestados</h4>
+<button class="btn btn-secondary flex-fill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtestados" aria-expanded="false" aria-controls="collapseAtestados">
+    Desplegar Atestados
+</button>
+@if (Model != null)
+{
+    @if (User.IsInRole("Administrador"))
+    {
+    <a asp-controller="Atestados" asp-action="Create" asp-route-idPersona="@Model.IdPersona" class="btn btn-primary flex-fill">Agregar Nuevo Atestado</a>
+    }
+}
+<div class="collapse" id="collapseAtestados">
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tipo de Atestado</th>
+                <th>Nombre del Archivo</th>
+                <th>Fecha de Subida</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @if (Model?.Atestados != null)
+    {
+        @foreach (var item in Model.Atestados)
+        {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoAtestado)
+                    </td>
+                    <td>
+                        <a href="@Url.Content(item.RutaArchivo)" target="_blank">@item.NombreOriginalArchivo</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaSubida)
+                    </td>
+                    <td>
+                        <a  asp-controller="Atestados" asp-action="Details" asp-route-id="@item.IdAtestado" class="btn btn-info">Detalles</a>
+                        @if (User.IsInRole("Administrador"))
+                        {                   
+                            <a asp-controller="Atestados" asp-action="Delete" asp-route-id="@item.IdAtestado" class="btn btn-danger">Eliminar</a>
+                        }
+                    </td>
+                </tr>
+        }
+    }
+        </tbody>
+    </table>
+</div>
+<hr />
+
+<h4>Niveles Educativos</h4>
+<button class="btn btn-secondary flex-fill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNivelesEducativos" aria-expanded="false" aria-controls="collapseNivelesEducativos">
+    Desplegar Niveles Educativos
+</button>
+@if (Model != null)
+{
+    @if (User.IsInRole("Administrador"))
+    {
+    <a asp-controller="NivelesEducativos" asp-action="Create" asp-route-idPersona="@Model.IdPersona" class="btn btn-primary flex-fill">Agregar Nivel Educativo</a>
+    }
+}
+<div class="collapse" id="collapseNivelesEducativos">
+    <hr>
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Grado Académico</th>
+                <th>Institución</th>
+                <th>Título Obtenido</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @if (Model?.NivelesEducativos != null)
+    {
+        @foreach (var item in Model.NivelesEducativos)
+        {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GradoAcademico)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Institucion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TituloObtenido)
+                    </td>
+                    <td>
+                        <a asp-controller="NivelesEducativos" asp-action="Details" asp-route-id="@item.IdNivelEducativo" class="btn btn-secondary">Detalles</a>
+                        @if(User.IsInRole("Administrador"))
+                        {
+                        <a asp-controller="NivelesEducativos" asp-action="Delete" asp-route-id="@item.IdNivelEducativo" class="btn btn-danger">Eliminar</a>
+                        }
+                    </td>
+                </tr>
+        }
+    }
+        </tbody>
+    </table>
+</div>
+<hr />
+
+<h4>Capacitaciones</h4>
+<button class="btn btn-secondary flex-fill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCapacitaciones" aria-expanded="false" aria-controls="collapseCapacitaciones">
+    Desplegar Capacitaciones
+</button>
+@if (Model != null)
+{
+    @if (User.IsInRole("Administrador"))
+    {
+    <a asp-controller="CapacitacionesEmpleado" asp-action="Create" asp-route-idPersona="@Model.IdPersona" class="btn btn-primary flex-fill">Agregar Capacitación</a>
+    }
+}
+<div class="collapse" id="collapseCapacitaciones">
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Institución</th>
+                <th>Finalizado en</th>
+                <th>Certificado</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @if (Model?.Capacitaciones != null)
+    {
+        @foreach (var item in Model.Capacitaciones)
+        {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreCurso)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Institucion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaFin)
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.RutaCertificado))
+                        {
+                            <a href="@Url.Content(item.RutaCertificado)" target="_blank">Ver Certificado</a>
+                        }
+                    </td>
+                    <td>
+                        <a asp-controller="CapacitacionesEmpleado" asp-action="Details" asp-route-id="@item.IdCapacitacionEmpleado" class="btn btn-secondary">Detalles</a> 
+                        @if(User.IsInRole("Administrador"))
+                        {
+                        <a asp-controller="CapacitacionesEmpleado" asp-action="Delete" asp-route-id="@item.IdCapacitacionEmpleado" class="btn btn-danger">Eliminar</a>
+                        }
+                    </td>
+                </tr>
+        }
+    }
+        </tbody>
+    </table>
+</div>
+<hr />
+
+@if (Model?.Empleado != null)
+{
+    <h4>Historial Disciplinario</h4>
+    <button class="btn btn-secondary flex-fill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHistorialDisciplinario" aria-expanded="false" aria-controls="collapseHistorialDisciplinario">
+        Desplegar Historial Disciplinario
+    </button>
+        @if (User.IsInRole("Administrador"))
+        {
+        <a asp-controller="HistorialDisciplinarios" asp-action="Create" asp-route-idEmpleado="@Model.Empleado.IdEmpleado" class="btn btn-primary flex-fill">Agregar Incidente Disciplinario</a>
+        }
+    <div class="collapse" id="collapseHistorialDisciplinario">
+    <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Fecha Incidente</th>
+                    <th>Tipo Incidente</th>
+                    <th>Registrado Por</th>
+                    <th>Archivo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model?.Empleado?.HistorialDisciplinario != null)
+                {
+                    @foreach (var item in Model.Empleado.HistorialDisciplinario)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaIncidente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TipoIncidente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RegistradoPor)
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.RutaIncidente))
+                                {
+                                    <a href="@Url.Content(item.RutaIncidente)" target="_blank">Ver Archivo</a>
+                                }
+                            </td>
+                            <td>
+                                <a asp-controller="HistorialDisciplinarios" asp-action="Details" asp-route-id="@item.IdIncidente" class="btn btn-secondary">Detalles</a>
+                                @if (User.IsInRole("Administrador"))
+                                {
+                                <a asp-controller="HistorialDisciplinarios" asp-action="Delete" asp-route-id="@item.IdIncidente" class="btn btn-danger">Eliminar</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+<hr />
+
+@if (Model?.Empleado != null)
+{
+    <h4>Evaluaciones de Desempeño</h4>
+    <button class="btn btn-secondary flex-fill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEvaluacionesDesempeno" aria-expanded="false" aria-controls="collapseEvaluacionesDesempeno">
+        Desplegar Evaluaciones de Desempeño
+    </button>
+        @if (User.IsInRole("Administrador"))
+        {
+        <a asp-controller="EvaluacionesDesempeno" asp-action="Create" asp-route-idEmpleado="@Model.Empleado.IdEmpleado" class="btn btn-primary flex-fill">Agregar Evaluación</a>
+        }
+    <div class="collapse" id="collapseEvaluacionesDesempeno">
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha Evaluación</th>
+                <th>Periodo</th>
+                <th>Puntuación</th>
+                <th>Informe</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model?.Empleado?.EvaluacionesDesempeno != null)
+            {
+                @foreach (var item in Model.Empleado!.EvaluacionesDesempeno)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaEvaluacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Periodo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Puntuacion)
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.RutaInforme))
+                            {
+                                <a href="@Url.Content(item.RutaInforme)" target="_blank">Ver Informe</a>
+                            }
+                        </td>
+                        <td>
+                            <a asp-controller="EvaluacionesDesempeno" asp-action="Details" asp-route-id="@item.IdEvaluacion" class="btn btn-primary" >Detalles</a>
+                                @if (User.IsInRole("Administrador"))
+                                {
+                            <a asp-controller="EvaluacionesDesempeno" asp-action="Delete" asp-route-id="@item.IdEvaluacion" botno rojo class="btn btn-danger" >Eliminar</a>
+                                }
+                        </td>
+                    </tr>
+                }
+            }   
+        </tbody>
+    </table>
+    </div>
+}
+}

@@ -1,0 +1,61 @@
+@model AcaciRRHH.Web.ViewModels.EmpleadoTerminationViewModel
+@{
+    ViewData["Title"] = "Finalizar Relación Laboral";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">
+                Nombre:
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.NombreCompletoEmpleado)
+            </dd>
+            <dt class="col-sm-4">
+                Fecha Contratación:
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.FechaContratacion)
+            </dd>
+            </dl>
+
+        <form asp-action="Terminate" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdEmpleado" />
+
+            <div class="form-group mb-3">
+                <label asp-for="FechaFinContrato" class="control-label">Fecha de Finalización de Contrato</label>
+                <input asp-for="FechaFinContrato" type="date" class="form-control" />
+                <span asp-validation-for="FechaFinContrato" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="TipoFinalizacion" class="control-label">Tipo de Finalización</label>
+                <select asp-for="TipoFinalizacion" class="form-control"
+                        asp-items="Html.GetEnumSelectList<AcaciRRHH.Web.Models.TipoFinalizacion>()">
+                    <option value="">-- Seleccionar --</option>
+                </select>
+                <span asp-validation-for="TipoFinalizacion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="MotivoFinalizacion" class="control-label">Motivo de Finalización</label>
+                <textarea asp-for="MotivoFinalizacion" class="form-control"></textarea>
+                <span asp-validation-for="MotivoFinalizacion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Confirmar Finalización" class="btn btn-danger" />
+                <a asp-action="Details" asp-route-id="@Model.IdEmpleado" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

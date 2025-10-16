@@ -1,0 +1,68 @@
+@model AcaciRRHH.Web.Models.HistorialDirectivo
+
+@{
+    ViewData["Title"] = "Eliminar Historial de Directivo";
+}
+
+<h1>Eliminar Historial de Directivo</h1>
+
+<h3>¿Estás seguro de que quieres eliminar este registro de historial?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Directivo
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Directivo!.Persona!.NombreCompleto)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Cargo)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FechaInicioMandato)
+        </dt>
+        <dd class="col-sm-9">
+            @Model.FechaInicioMandato.ToLocalTime().ToString("dd/MM/yyyy")
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FechaFinMandato)
+        </dt>
+        <dd class="col-sm-9">
+            @(Model.FechaFinMandato.HasValue ? Model.FechaFinMandato.Value.ToLocalTime().ToString("dd/MM/yyyy") : "N/A")
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TipoMandato)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TipoMandato)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Comentarios)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Comentarios)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.RegistradoPor)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.RegistradoPor)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+        <dd class="col-sm-9">
+            @Model.FechaRegistro.ToLocalTime().ToString("dd/MM/yyyy HH:mm")
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdHistorialDirectivo" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-controller="Directivos" asp-action="Details" asp-route-id="@Model.IdDirectivo" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

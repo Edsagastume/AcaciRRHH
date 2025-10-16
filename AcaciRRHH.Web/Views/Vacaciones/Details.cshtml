@@ -1,0 +1,75 @@
+@model AcaciRRHH.Web.Models.Vacacion
+
+@{
+    ViewData["Title"] = "Detalle de Vacación";
+}
+
+<h2>Detalle de Vacacion</h2>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Empleado
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Empleado?.Persona?.NombreCompleto ?? "N/A"
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FechaSolicitud)
+        </dt>
+        <dd class="col-sm-9">
+            @Model.FechaSolicitud.ToString("dd/MM/yyyy")
+        </dd>
+        <dt class="col-sm-3">
+            Fechas de Vacación
+        </dt>
+        <dd class="col-sm-9">
+            @if (Model.SonConsecutivas)
+            {
+                <span>@(Model.FechaInicio.HasValue ? Model.FechaInicio.Value.ToString("dd/MM/yyyy") : "") - @(Model.FechaFin.HasValue ? Model.FechaFin.Value.ToString("dd/MM/yyyy") : "")</span>
+            }
+            else if (!string.IsNullOrEmpty(Model.FechasNoConsecutivas))
+            {
+                var fechas = Model.FechasNoConsecutivas.Split(',')
+                    .Select(f => DateTime.Parse(f.Trim()))
+                    .OrderBy(d => d)
+                    .ToList();
+
+                foreach (var fecha in fechas)
+                {
+                    var color = fecha < DateTime.Today ? "text-danger" : "";
+                    <span class="@color">@fecha.ToString("dd/MM/yyyy")</span>
+                    if (fecha != fechas.Last())
+                    {
+                        <span>, </span>
+                    }
+                }
+            }
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DiasSolicitados)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DiasSolicitados)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Aprobado)
+        </dt>
+        <dd class="col-sm-9">
+            @(Model.Aprobado ? "Sí" : "No")
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Comentarios)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Comentarios)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning btn-sm" >Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger btn-sm">Delete</a> |
+    <a asp-controller="Empleados" asp-action="Details" asp-route-id="@Model?.IdEmpleado" class="btn btn-primary btn-sm">Regresar</a>
+            </div>
+</div>

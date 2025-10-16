@@ -1,0 +1,50 @@
+@model AcaciRRHH.Web.Models.Directivo
+@using AcaciRRHH.Web.Models
+
+@{
+    ViewData["Title"] = "Editar Cargo de Directivo";
+}
+
+<h2>Editar Cargo de Directivo</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdDirectivo" />
+            <div class="form-group">
+                <label asp-for="IdPersona" class="control-label"></label>
+                <select asp-for="IdPersona" class="form-control" asp-items="ViewBag.IdPersona"></select>
+                <span asp-validation-for="IdPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CargoDirectivo" class="control-label"></label>
+                <select asp-for="CargoDirectivo" class="form-control" asp-items="Html.GetEnumSelectList<CargoDirectivoEnum>()"></select>
+                <span asp-validation-for="CargoDirectivo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaInicioMandato" class="control-label"></label>
+                <input asp-for="FechaInicioMandato" type="date" class="form-control" />
+                <span asp-validation-for="FechaInicioMandato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaFinMandato" class="control-label"></label>
+                <input asp-for="FechaFinMandato" type="date" class="form-control" />
+                <span asp-validation-for="FechaFinMandato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoMiembro" class="control-label"></label>
+                <select asp-for="TipoMiembro" class="form-control" asp-items="Html.GetEnumSelectList<TipoMiembroOrganoEnum>()"></select>
+                <span asp-validation-for="TipoMiembro" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

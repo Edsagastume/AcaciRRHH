@@ -1,0 +1,453 @@
+@model AcaciRRHH.Web.Models.Empleado
+@using AcaciRRHH.Web.Models
+@using System.Globalization
+
+@functions {
+    public bool IsVacationInYear(AcaciRRHH.Web.Models.Vacacion vacacion, int year)
+    {
+        if (vacacion.SonConsecutivas)
+        {
+            if (vacacion.FechaInicio.HasValue && vacacion.FechaFin.HasValue)
+            {
+                var startDate = vacacion.FechaInicio.Value;
+                var endDate = vacacion.FechaFin.Value;
+                // Check if the vacation period intersects with the given year at all.
+                return startDate.Year <= year && endDate.Year >= year;
+            }
+        }
+        else if (!string.IsNullOrEmpty(vacacion.FechasNoConsecutivas))
+        {
+            return vacacion.FechasNoConsecutivas.Split(',')
+                .Select(f => DateTime.Parse(f.Trim()))
+                .Any(d => d.Year == year);
+        }
+        return false;
+    }
+
+    public int GetVacationDaysInYear(IEnumerable<AcaciRRHH.Web.Models.Vacacion> vacaciones, int year)
+    {
+        int totalDays = 0;
+        foreach (var vacacion in vacaciones)
+        {
+            if (IsVacationInYear(vacacion, year))
+            {
+                if (vacacion.SonConsecutivas)
+                {
+                    if (vacacion.FechaInicio.HasValue && vacacion.FechaFin.HasValue)
+                    {
+                        var startDate = vacacion.FechaInicio.Value;
+                        var endDate = vacacion.FechaFin.Value;
+
+                        var intersectionStart = startDate < new DateTime(year, 1, 1) ? new DateTime(year, 1, 1) : startDate;
+                        var intersectionEnd = endDate > new DateTime(year, 12, 31) ? new DateTime(year, 12, 31) : endDate;
+
+                        if (intersectionStart <= intersectionEnd)
+                        {
+                            totalDays += vacacion.DiasSolicitados;
+                        }
+                    }
+                }
+                else if (!string.IsNullOrEmpty(vacacion.FechasNoConsecutivas))
+                {
+                    totalDays += vacacion.FechasNoConsecutivas.Split(',')
+                        .Select(f => DateTime.Parse(f.Trim()))
+                        .Count(d => d.Year == year);
+                }
+            }
+        }
+        return totalDays;
+    }
+
+    public int GetLeaveDaysInYear(IEnumerable<AcaciRRHH.Web.Models.Incapacidad> incapacidades, int year)
+    {
+        int totalDays = 0;
+        foreach (var incapacidad in incapacidades)
+        {
+            var startDate = incapacidad.FechaInicio;
+            var endDate = incapacidad.FechaFin;
+
+            if (startDate.Year <= year && endDate.Year >= year)
+            {
+                var intersectionStart = startDate < new DateTime(year, 1, 1) ? new DateTime(year, 1, 1) : startDate;
+                var intersectionEnd = endDate > new DateTime(year, 12, 31) ? new DateTime(year, 12, 31) : endDate;
+
+                if (intersectionStart <= intersectionEnd)
+                {
+                    totalDays += (int)(intersectionEnd - intersectionStart).TotalDays + 1;
+                }
+            }
+        }
+        return totalDays;
+    }
+
+    public int GetLeaveDaysInYear(IEnumerable<AcaciRRHH.Web.Models.Permiso> permisos, int year)
+    {
+        int totalDays = 0;
+        foreach (var permiso in permisos)
+        {
+            var startDate = permiso.FechaInicio;
+            var endDate = permiso.FechaFin;
+
+            if (startDate.Year <= year && endDate.Year >= year)
+            {
+                var intersectionStart = startDate < new DateTime(year, 1, 1) ? new DateTime(year, 1, 1) : startDate;
+                var intersectionEnd = endDate > new DateTime(year, 12, 31) ? new DateTime(year, 12, 31) : endDate;
+
+                if (intersectionStart <= intersectionEnd)
+                {
+                    totalDays += (int)(intersectionEnd - intersectionStart).TotalDays + 1;
+                }
+            }
+        }
+        return totalDays;
+    }
+}
+
+@{
+    ViewData["Title"] = "Detalles del Empleado";
+    var currentYear = DateTime.Now.Year;
+
+    var diasVacaciones = GetVacationDaysInYear(Model.Vacaciones, currentYear);
+
+    var diasIncapacidades = GetLeaveDaysInYear(Model.Incapacidades, currentYear);
+
+    var diasPermisos = GetLeaveDaysInYear(Model.Permisos, currentYear);
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Datos del Empleado</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Persona Asociada @* Reemplazado DisplayNameFor para evitar el error con propiedades de navegación anidadas *@
+        </dt>
+        <dd class="col-sm-9">
+            @(Model.Persona?.NombreCompleto ?? "N/A")
+            (@(Model.Persona?.DUI ?? "N/A"))
+            @if (Model.Persona != null)
+            {
+                <span> - <a asp-controller="Personas" asp-action="Details" asp-route-id="@Model.Persona.IdPersona">Ver Detalles de Persona</a></span>
+            }
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CodigoEmpleado)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CodigoEmpleado)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FechaContratacion)
+        </dt>
+        <dd class="col-sm-9">
+            @Model.FechaContratacion.ToShortDateString() @* Simplificado: Acceso directo al valor *@
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Puesto)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Puesto)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Salario)
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Salario.ToString("C", new CultureInfo("es-SV"))
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Departamento)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Departamento)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt class="col-sm-3">
+            Días de Vacaciones (@currentYear)
+        </dt>
+        <dd class="col-sm-9">
+            @diasVacaciones
+        </dd>
+
+        <dt class="col-sm-3">
+            Días de Incapacidad (@currentYear)
+        </dt>
+        <dd class="col-sm-9">
+            @diasIncapacidades
+        </dd>
+
+        <dt class="col-sm-3">
+            Días de Permiso (@currentYear)
+        </dt>
+        <dd class="col-sm-9">
+            @diasPermisos
+        </dd>
+
+        @* Mostrar detalles de finalización SOLO si el empleado NO está Activo *@
+        @if (Model.Estado != EstadoEmpleado.Activo)
+        {
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.FechaFinContrato)
+            </dt>
+            <dd class="col-sm-9">
+                @if (Model.FechaFinContrato.HasValue)
+                {
+                    @Model.FechaFinContrato.Value.ToShortDateString() @* Simplificado: Acceso directo al valor *@
+                }
+                else
+                {
+                    <span>N/A</span>
+                }
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.TipoFinalizacion)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.TipoFinalizacion)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.MotivoFinalizacion)
+            </dt>
+            <dd class="col-sm-9">
+                @(string.IsNullOrEmpty(Model.MotivoFinalizacion) ? "No especificado" : Model.MotivoFinalizacion)
+            </dd>
+        }
+    </dl>
+    <hr>
+    <div class="mt-4">
+    @if (User.IsInRole("Administrador"))
+    {
+    <a asp-action="Edit" asp-route-id="@Model.IdEmpleado" class="btn btn-primary">Editar</a> 
+    @* Solo mostrar si el empleado está Activo *@
+    
+    @if (Model.Estado == EstadoEmpleado.Activo)
+    {
+        <a asp-action="Terminate" asp-route-id="@Model.IdEmpleado" class="btn btn-danger">Finalizar Relación Laboral</a>
+        <a asp-action="Create" asp-controller="TrayectoriaEmpleados" asp-route-idEmpleado="@Model.IdEmpleado" class="btn btn-info">Registrar Cambio de Puesto/Salario</a>
+    @* Solo mostrar si el empleado está inactivo *@}
+    else if (Model.Estado == EstadoEmpleado.Inactivo)
+    {
+        <a asp-action="Reactivate" asp-route-id="@Model.IdEmpleado" class="btn btn-success">Reactivar Empleado</a>
+    }  
+    }
+    <a asp-action="Index" class="btn btn-secondary">Volver al Listado</a> 
+    </div>
+
+    <hr />
+
+    <h3>Historial de Trayectoria</h3>
+    <button class="btn btn-secondary flex-fill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTrayectoria" aria-expanded="false" aria-controls="collapseTrayectoria">
+        Desplegar Historial de Trayectoria
+    </button>
+    <div class="collapse" id="collapseTrayectoria">
+        <hr>
+        @if (Model.HistorialTrayectoria != null && Model.HistorialTrayectoria.Any())
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Fecha Cambio</th>
+                        <th>Tipo Cambio</th>
+                        <th>Puesto Anterior</th>
+                        <th>Puesto Nuevo</th>
+                        <th>Salario Anterior</th>
+                        <th>Salario Nuevo</th>
+                        <th>Departamento Anterior</th>
+                        <th>Departamento Nuevo</th>
+                        <th>Motivo Cambio</th>
+                        <th>Registrado Por</th>
+                        <th>Fecha Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.HistorialTrayectoria.Where(h => h.FechaCambio.Year == currentYear).OrderByDescending(t => t.IdHistorialLaboral))
+                    {
+                        <tr>
+                            <td>@item.FechaCambio.ToString("dd/MM/yyyy")</td>
+                            <td>@item.TipoCambio</td>
+                            <td>@(item.PuestoAnterior ?? "N/A")</td>
+                            <td>@(item.PuestoNuevo ?? "N/A")</td>
+                            <td>@(item.SalarioAnterior?.ToString("C") ?? "N/A")</td>
+                            <td>@(item.SalarioNuevo?.ToString("C") ?? "N/A")</td>
+                            <td>@(item.DepartamentoAnterior ?? "N/A")</td>
+                            <td>@(item.DepartamentoNuevo ?? "N/A")</td>
+                            <td>@(item.MotivoCambio ?? "N/A")</td>
+                            <td>@(item.RegistradoPor ?? "N/A")</td>
+                            <td>@item.FechaRegistro.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No hay historial de trayectoria registrado para este empleado.</p>
+        }
+    </div>
+
+    <hr />
+
+    <h3>Incapacidades</h3>
+    <button class="btn btn-secondary flex-fill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIncapacidades" aria-expanded="false" aria-controls="collapseIncapacidades">
+        Desplegar Incapacidades
+    </button>
+    <a asp-controller="Incapacidades" asp-action="Create" asp-route-idEmpleado="@Model.IdEmpleado" class="btn btn-primary flex-fill">Registrar Incapacidad</a>
+    <div class="collapse" id="collapseIncapacidades">
+        <hr>
+        @if (Model.Incapacidades != null && Model.Incapacidades.Any())
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Motivo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Incapacidades.Where(i => i.FechaInicio.Year == DateTime.Now.Year).OrderByDescending(i => i.FechaInicio))
+                    {
+                        <tr>
+                            <td>@item.FechaInicio.ToString("dd/MM/yyyy")</td>
+                            <td>@item.FechaFin.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Motivo</td>
+                            <td>
+                                <a asp-controller="Incapacidades" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Detalles</a> |
+                                <a asp-controller="Incapacidades" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No hay incapacidades registradas para este empleado.</p>
+        }
+        
+    </div>
+
+    <hr />
+
+    <h3>Permisos</h3>
+    <button class="btn btn-secondary flex-fill" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePermisos" aria-expanded="false" aria-controls="collapsePermisos">
+        Desplegar Permisos
+    </button>
+    <a asp-controller="Permisos" asp-action="Create" asp-route-idEmpleado="@Model.IdEmpleado" class="btn btn-primary flex-fill">Registrar Permiso</a>
+    <div class="collapse" id="collapsePermisos">
+        <hr>
+        @if (Model.Permisos != null && Model.Permisos.Any())
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Fecha Solicitud</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Motivo</th>
+                        <th>Aprobado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Permisos.Where(p => p.FechaInicio.Year == DateTime.Now.Year).OrderByDescending(p => p.FechaSolicitud))
+                    {
+                        <tr>
+                            <td>@item.FechaSolicitud.ToString("dd/MM/yyyy")</td>
+                            <td>@item.FechaInicio.ToString("dd/MM/yyyy")</td>
+                            <td>@item.FechaFin.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Motivo</td>
+                            <td>@(item.Aprobado ? "Sí" : "No")</td>
+                            <td>
+                                <a asp-controller="Permisos" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Detalles</a> |
+                                <a asp-controller="Permisos" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No hay permisos registrados para este empleado.</p>
+        }
+    </div>    
+
+    <hr />
+    <h3>Vacaciones</h3>
+    <button class="btn btn-secondary flex-fill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVacaciones" aria-expanded="false" aria-controls="collapseVacaciones">
+        Desplegar Vacaciones
+    </button>
+    <a asp-controller="Vacaciones" asp-action="Create" asp-route-idEmpleado="@Model.IdEmpleado" class="btn btn-primary flex-fill">Registrar Vacaciones</a>
+    <div class="collapse" id="collapseVacaciones">
+        <hr>
+        @if (Model.Vacaciones != null && Model.Vacaciones.Any())
+        {
+            <table class="table table-striped text-center" style="table-layout: fixed; width: 100%;">
+                <thead>
+                    <tr>
+                        <th  style="width: 15%;"">Fecha Solicitud</th>
+                        <th style="width: 40%;">Fechas de Vacación</th>
+                        <th style="width: 10%;">Días de Vacación</th>
+                        <th style="width: 10%;">Aprobado</th>
+                        <th style="width: 25%;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    @foreach (var item in Model.Vacaciones.Where(v => !v.IsVencida && IsVacationInYear(v, currentYear)).OrderByDescending(v => v.FechaSolicitud))
+                    {
+                        <tr>
+                            <td>@item.FechaSolicitud.ToString("dd/MM/yyyy")</td>
+                            <td style="text-align: left; white-space: normal; word-break: break-word;">
+                                <div style="max-height: 6em; overflow-y: auto;">
+
+                                @if (item.SonConsecutivas)
+                                {
+                                    <span>@(item.FechaInicio.HasValue ? item.FechaInicio.Value.ToString("dd/MM/yyyy") : "") - @(item.FechaFin.HasValue ? item.FechaFin.Value.ToString("dd/MM/yyyy") : "")</span>
+                                }
+                                else if (!string.IsNullOrEmpty(item.FechasNoConsecutivas))
+                                {
+                                    var fechas = item.FechasNoConsecutivas.Split(',')
+                                        .Select(f => DateTime.Parse(f.Trim()))
+                                        .OrderBy(d => d)
+                                        .ToList();
+
+                                    foreach (var fecha in fechas)
+                                    {
+                                        var color = fecha < DateTime.Today ? "text-danger" : "";
+                                        <span class="text-nowrap @color">@fecha.ToString("dd/MM/yyyy")</span>
+                                        if (fecha != fechas.Last())
+                                        {
+                                            <span>, </span>
+                                        }
+                                    }
+                                }
+                                </div>
+                            </td>
+                            <td>@item.DiasSolicitados</td>
+                            <td>@(item.Aprobado ? "Sí" : "No")</td>
+                            <td>
+                                <a asp-controller="Vacaciones" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a> |
+                                <a asp-controller="Vacaciones" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Detalles</a> |
+                                <a asp-controller="Vacaciones" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No hay vacaciones registradas para este empleado.</p>
+        }  
+    </div>
+</div>

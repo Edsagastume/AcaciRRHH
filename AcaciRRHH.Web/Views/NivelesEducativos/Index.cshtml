@@ -1,0 +1,83 @@
+@model IEnumerable<AcaciRRHH.Web.Models.NivelEducativo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@if (User.IsInRole("Administrador"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Persona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GradoAcademico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Institucion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TituloObtenido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentarios)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Persona!.Apellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradoAcademico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Institucion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TituloObtenido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comentarios)
+            </td>
+            <td>
+                <div class="d-flex" style="gap: 8px;" role="group">
+                    @if (User.IsInRole("Administrador"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.IdNivelEducativo">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.IdNivelEducativo">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdNivelEducativo">Delete</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Details" asp-route-id="@item.IdNivelEducativo">Details</a>
+                    }
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

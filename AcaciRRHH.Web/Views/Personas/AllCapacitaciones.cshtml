@@ -1,0 +1,55 @@
+@model AcaciRRHH.Web.Models.Persona
+
+@{
+    ViewData["Title"] = "Todas las Capacitaciones de " + (Model?.Nombre ?? "") + " " + (Model?.Apellidos ?? "");
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Curso</th>
+            <th>Institución</th>
+            <th>Fin</th>
+            <th>Certificado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model?.Capacitaciones != null)
+        {
+            @foreach (var item in Model.Capacitaciones)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreCurso)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Institucion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaFin)
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.RutaCertificado))
+                        {
+                            <a href="@Url.Content(item.RutaCertificado)" target="_blank">Ver Certificado</a>
+                        }
+                    </td>
+                    <td>
+                        <a asp-controller="CapacitacionesEmpleado" asp-action="Details" asp-route-id="@item.IdCapacitacionEmpleado" class="btn btn-secondary">Detalles</a>
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <a asp-controller="CapacitacionesEmpleado" asp-action="Delete" asp-route-id="@item.IdCapacitacionEmpleado" class="btn btn-danger">Eliminar</a>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Details" asp-route-id="@(Model?.IdPersona)" class="btn btn-secondary">Volver a Detalles de Persona</a>
+</div>

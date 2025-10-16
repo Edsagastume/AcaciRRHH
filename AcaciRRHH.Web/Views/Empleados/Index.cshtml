@@ -1,0 +1,79 @@
+@model IEnumerable<AcaciRRHH.Web.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Empleados";
+}
+
+<h1>Empleados</h1>
+
+@if (User.IsInRole("Administrador"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Crear Nuevo</a>
+    </p>
+}
+
+<form asp-action="Index" method="get" class="mb-4">
+    <div class="form-group">
+        <label for="searchString" class="control-label">Buscar:</label>
+        <input type="text" name="searchString" class="form-control" value="@ViewData["CurrentFilter"]" />
+    </div>
+    <button type="submit" class="btn btn-info mt-2">Buscar</button>
+    <a asp-action="Index" class="btn btn-secondary mt-2">Mostrar todos</a>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+           @* //Nombres de las columnas *@
+            <th style="width: 15%;">
+                @Html.DisplayNameFor(model => model.CodigoEmpleado)
+            </th>
+            <th sthyle="width: 25%;">
+                @Html.DisplayNameFor(model => model.Persona!.Nombre) </th>
+            <th sthyle="width: 25%;">
+                @Html.DisplayNameFor(model => model.Persona!.Apellidos) </th>
+            <th sthyle="width: 15%;">
+                @Html.DisplayNameFor(model => model.Estado) </th>
+            <th sthyle="width: 20%;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+               @* Mostrar los datos de cada empleado *@
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodigoEmpleado)
+                <td>
+                    @Html.DisplayFor(modelItem => item.Persona!.Nombre) </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Persona!.Apellidos) </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado) </td>
+                <td>
+                    <div class="d-flex" style="gap: 8px;" role="group" aria-label="Acciones de Empleado">
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.IdEmpleado" class="btn btn-sm btn-primary">Editar</a>
+                            <a asp-action="Details" asp-route-id="@item.IdEmpleado" class="btn btn-sm btn-info">Detalles</a>
+                            @if (item.Estado == AcaciRRHH.Web.Models.EstadoEmpleado.Activo)
+                            {
+                                <a asp-action="Terminate" asp-route-id="@item.IdEmpleado" class="btn btn-sm btn-danger">Finalizar</a>
+                            }
+                            else
+                            {
+                                <a asp-action="Delete" asp-route-id="@item.IdEmpleado" class="btn btn-sm btn-warning">Eliminar</a>
+                            }
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-route-id="@item.IdEmpleado" class="btn btn-sm btn-info">Detalles</a>
+                        }
+                    </div>
+                </td>
+           </tr>
+        }
+    </tbody>
+</table>

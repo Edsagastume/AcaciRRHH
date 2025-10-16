@@ -1,0 +1,68 @@
+@model AcaciRRHH.Web.Models.HistorialDirectivo
+
+@{
+    ViewData["Title"] = "Detalles del Historial de Directivo";
+}
+
+<h1>Detalles del Historial de Directivo</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Directivo
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Directivo!.Persona!.NombreCompleto)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Cargo)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FechaInicioMandato)
+        </dt>
+        <dd class="col-sm-9">
+            @Model.FechaInicioMandato.ToLocalTime().ToString("dd/MM/yyyy")
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FechaFinMandato)
+        </dt>
+        <dd class="col-sm-9">
+            @(Model.FechaFinMandato.HasValue ? Model.FechaFinMandato.Value.ToLocalTime().ToString("dd/MM/yyyy") : "N/A")
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TipoMandato)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TipoMandato)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Comentarios)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Comentarios)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.RegistradoPor)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.RegistradoPor)
+        </dt>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+        <dd class="col-sm-9">
+            @Model.FechaRegistro.ToLocalTime().ToString("dd/MM/yyyy HH:mm")
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("Administrador"))
+    {
+    <a asp-action="Edit" asp-route-id="@Model.IdHistorialDirectivo" class="btn btn-warning">Editar</a>
+    }
+    <a asp-controller="Directivos" asp-action="Details" asp-route-id="@Model.IdDirectivo" class="btn btn-secondary">Volver a Detalles del Directivo</a>
+</div>

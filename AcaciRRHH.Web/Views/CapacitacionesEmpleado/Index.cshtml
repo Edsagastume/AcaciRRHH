@@ -1,0 +1,66 @@
+@model IEnumerable<AcaciRRHH.Web.Models.CapacitacionEmpleado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCurso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Institucion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Persona)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCurso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Institucion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFin)
+            </td>   
+            <td>
+                @Html.DisplayFor(modelItem => item.Persona!.NombreCompleto)
+            </td>
+            <td>
+                <div class="d-flex" style="gap: 8px;" role="group">
+                    @if (User.IsInRole("Administrador"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.IdCapacitacionEmpleado" class="btn btn-primary">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.IdCapacitacionEmpleado" class="btn btn-secondary">Detalle</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdCapacitacionEmpleado"class="btn btn-danger">Eliminar</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Details" asp-route-id="@item.IdCapacitacionEmpleado" class="btn btn-secondary">Detalle</a>
+                    }
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
